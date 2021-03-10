@@ -1,13 +1,9 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BigLotteryTest
@@ -25,8 +21,9 @@ namespace BigLotteryTest
     public partial class Form1 : Form
     {
 
-        String baseUrl = "http://k-king.com.tw/biglottery/";
-        APIConnector connector = new APIConnector("http://k-king.com.tw/biglottery/");
+        static String baseUrl = "http://www.kkinggame.com/biglottery/";
+        //static String baseUrl = "http://220.135.142.2/biglottery/";
+        APIConnector connector = new APIConnector(baseUrl);
 
 
 
@@ -40,13 +37,18 @@ namespace BigLotteryTest
             LoadtoComboBox("* from biglottery_machine_category", "name", comboBox1);
             LoadtoComboBox("* from biglottery_machine_category", "name", comboBox2);
             LoadtoComboBox("* from biglottery_machine_category", "name", comboBox7);
+            LoadtoCheckedListBoxforGroup("* from biglottery_machine_category", "name", checkedListBoxGroup);
+            LoadtoCheckedListBoxforGroup("* from biglottery_machine_category", "name", checkedListBoxBetGroup);
+            LoadtoCheckedListBoxforGroup("* from biglottery_member", "account", checkedListBoxMember);
             LoadtoComboBox("* from biglottery_member", "account", comboBox3);
             LoadtoComboBox("* from biglottery_member", "account", comboBox6);
+            LoadtoComboBox("* from biglottery_member", "account", comboBoxResultMember);
             LoadtoComboBox("DISTINCT lottery_no FROM biglottery_lottery ", "lottery_no", comboBox4);
             LoadtoComboBox("DISTINCT lottery_no FROM biglottery_lottery ", "lottery_no", comboBox5);
             LoadtoComboBox("DISTINCT lottery_no FROM biglottery_lottery ", "lottery_no", comboBox8);
             LoadtoComboBox("DISTINCT lottery_no FROM biglottery_lottery ", "lottery_no", comboBox9);
             LoadtoComboBox("DISTINCT lottery_no FROM biglottery_lottery ", "lottery_no", comboBox10);
+            LoadtoComboBox("DISTINCT lottery_no FROM biglottery_lottery ", "lottery_no", comboBoxResultLotteryNo);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -69,8 +71,8 @@ namespace BigLotteryTest
             richTextBox2.Text = result;
 
             JObject jObject = connector.StringConvertJObj(result);
-
-            if( jObject["data"]["state"].Value<string>() == "success")
+            if (jObject == null) return ;
+            if ( jObject["data"]["state"].Value<string>() == "success")
             {
                 
                 textBox6.Text = textBox4.Text =  textBox5.Text = textBox2.Text = textBox1.Text = jObject["data"]["lottery_no"].Value<string>();
@@ -86,7 +88,8 @@ namespace BigLotteryTest
             richTextBox3.Text = result;
 
             JObject jObject = connector.StringConvertJObj(result);
-            if( jObject["data"]["state"].Value<string>() == "success" )
+            if (jObject == null) return;
+            if ( jObject["data"]["state"].Value<string>() == "success" )
             {
                 label24.Text = jObject["data"]["total_prize"].Value<string>();
                 label25.Text = jObject["data"]["balance_prize"].Value<string>();
@@ -191,7 +194,7 @@ namespace BigLotteryTest
             richTextBox4.Text = result;
 
             JObject jObject = connector.StringConvertJObj(result);
-
+            if (jObject == null) return;
             if (jObject["data"]["state"].Value<string>() == "success")
             {
                 String[] strGetNo = new string[6] { "0", "0", "0", "0", "0", "0" };
@@ -280,8 +283,8 @@ namespace BigLotteryTest
 
         private void LoadtoComboBox(String strCmd , String schema , ComboBox comboBox)
         {
-            JObject jObject = connector.GetJObjectSelectSQLWithUrl("http://k-king.com.tw/biglottery/", strCmd);
-
+            JObject jObject = connector.GetJObjectSelectSQLWithUrl(baseUrl, strCmd);
+            if (jObject == null) return ;
             var groupNames = from p in jObject["data"] select (string)p[schema];
             comboBox.Items.Clear();
             foreach (var item in groupNames)
@@ -290,12 +293,23 @@ namespace BigLotteryTest
             }
         }
 
-        
+        private void LoadtoCheckedListBoxforGroup(String strCmd, String schema, CheckedListBox checkedListBox)
+        {
+            JObject jObject = connector.GetJObjectSelectSQLWithUrl(baseUrl, strCmd);
+            if (jObject == null) return;
+            var groupNames = from p in jObject["data"] select (string)p[schema];
+            checkedListBox.Items.Clear();
+            foreach (var item in groupNames)
+            {
+                checkedListBox.Items.Add(item,true);
+            }
+
+        }
 
 
         private bool LoadtoCheckedListBox(String strCmd , String schema, CheckedListBox checkListBox)
         {
-            JObject jObject = connector.GetJObjectSelectSQLWithUrl("http://k-king.com.tw/biglottery/", strCmd);
+            JObject jObject = connector.GetJObjectSelectSQLWithUrl(baseUrl, strCmd);
             if( jObject == null )   return false;
             var groupNames = from p in jObject["data"]  
                              select p["no1"].Value<string>()+","+ p["no2"].Value<string>()+ "," + p["no3"].Value<string>()+ "," + p["no4"].Value<string>()+ "," + p["no5"].Value<string>()+ "," + p["no6"].Value<string>() ;
@@ -330,6 +344,8 @@ namespace BigLotteryTest
             LoadtoCheckedListBox(strCmd, "", checkedListBox1);
 
         }
+
+        DataSet dataSet = new DataSet();
 
         private void button60_Click(object sender, EventArgs e)
         {
@@ -370,7 +386,7 @@ namespace BigLotteryTest
                         if (result == null) continue; 
                         richTextBox6.AppendText(result+"\n");
                         JObject jObject = connector.StringConvertJObj(result);
-
+                        if (jObject == null) continue;
                         if (jObject["data"]["state"].Value<string>() == "success")
                         {
                             if( jObject["data"]["prize"].Value<string>() == "0" )
@@ -451,6 +467,193 @@ namespace BigLotteryTest
         private void comboBox10_SelectedIndexChanged(object sender, EventArgs e)
         {
             textBox6.Text = comboBox10.SelectedItem.ToString();
+        }
+
+        public int countDownSecond = 60;
+
+        private void timerOpen_Tick(object sender, EventArgs e)
+        {
+            if (checkBoxTimerOpen.Checked == true)
+            {
+                if (countDownSecond == 0)
+                {
+                    labelTimerCountdown.Text = (countDownSecond / 60).ToString("00") + (countDownSecond / 60).ToString("00");
+                    richTextBoxGroup.Clear();
+
+                    String result = "";
+                    for(int i=0;i<checkedListBoxGroup.CheckedItems.Count;i++)
+                    {
+                        string item = checkedListBoxGroup.CheckedItems[i].ToString();
+                        // 取得最新的lottery 期號
+                        result = connector.GetStringWithUrl(baseUrl, "api_lottery.php?action=getTheLatestLottery&group_name=" + item);
+                        richTextBoxGroup.AppendText(result + "\n");
+                        JObject jObject = connector.StringConvertJObj(result);
+                        if (jObject == null) continue; 
+
+                        if (jObject["data"]["state"].Value<string>() == "success")
+                        {
+                            string latestLotteryNo = jObject["data"]["lottery_no"].Value<string>();
+
+                            // 開始樂透開獎
+                            result = connector.GetStringWithUrl(baseUrl, "api_lottery.php?action=getDrawLottery&lottery_no=" + latestLotteryNo);
+                            richTextBoxGroup.AppendText(result + "\n");
+
+                            // 計算兌獎行程
+                            result = connector.GetStringWithUrl(baseUrl, "pair_award.php?action=pairAward&lottery_no=" + latestLotteryNo);
+
+                            // 重新開始新的期號
+                            result = connector.GetStringWithUrl(baseUrl, "api_lottery.php?action=startLottery&group_name=" + item);
+                            richTextBoxGroup.AppendText(result + "\n");
+
+                        }
+                    }
+
+                    countDownSecond =Convert.ToInt32( Convert.ToDouble(textBoxTimerSet.Text)*60);
+                }
+                else
+                {
+                    countDownSecond--;
+                    labelTimerCountdown.Text = (countDownSecond / 60).ToString("00") +":"+ (countDownSecond % 60).ToString("00");
+                    progressBar1.Value = countDownSecond;
+                }
+            }
+
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            string strLatestLotteryNo = e.Argument.ToString();
+            String result = connector.GetStringWithUrl(baseUrl, "pair_award.php?action=pairAward&lottery_no=" + strLatestLotteryNo);          
+        }
+
+        private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+
+        }
+
+        private void checkBoxTimerOpen_CheckedChanged(object sender, EventArgs e)
+        {
+            if( checkBoxTimerOpen.Checked == true)
+            {
+                countDownSecond = Convert.ToInt32(Convert.ToDouble(textBoxTimerSet.Text) * 60);
+                progressBar1.Maximum = countDownSecond;
+                progressBar1.Value = countDownSecond;
+                progressBar1.Minimum = 0;
+
+                timerOpen.Enabled = true; 
+            }
+            else
+            {
+                timerOpen.Enabled = false;
+            }
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        int timerbetCountDown = 5;
+
+        private void timerBet_Tick(object sender, EventArgs e)
+        {
+            if (timerbetCountDown == 0)
+            {
+                richTextBoxBetGroup.Clear();
+
+                String result = "";
+                for (int j = 0; j < checkedListBoxMember.CheckedItems.Count; j++)
+                {
+                    string memberitem = checkedListBoxMember.CheckedItems[j].ToString();
+
+                    for (int i = 0; i < checkedListBoxBetGroup.CheckedItems.Count; i++)
+                    {
+                        string item = checkedListBoxBetGroup.CheckedItems[i].ToString();
+                        // 取得最新的lottery 期號
+                        result = connector.GetStringWithUrl(baseUrl, "api_lottery.php?action=getTheLatestLottery&group_name=" + item);
+                        richTextBoxBetGroup.AppendText(result + "\n");
+                        if (result == null) continue;
+                        JObject jObject = connector.StringConvertJObj(result);
+                        if (jObject == null) continue;
+                        if (jObject["data"]["state"].Value<string>() == "success")
+                        {
+                            string latestLotteryNo = jObject["data"]["lottery_no"].Value<string>();
+                            textBoxLotteryNo.Text = latestLotteryNo;
+
+
+                            String strCmd = "api_lottery.php?action=getMemberLottery";
+
+                            strCmd += "&lottery_no=" + textBoxLotteryNo.Text;
+                            strCmd += "&money=" + textBoxBetValue.Text;
+                            strCmd += "&member_account=" + memberitem;
+                            
+                            result = connector.GetStringWithUrl(baseUrl, strCmd);
+                            if (result == null) continue;
+                            richTextBoxBetGroup.AppendText(result.ToString());
+
+
+                        }
+
+
+
+
+                    }
+                }
+
+                labelBetTimerCountDown.Text = textBoxSetBetTime.Text;
+                timerbetCountDown = Convert.ToInt32(textBoxSetBetTime.Text);
+            }
+            else
+            {
+                timerbetCountDown--;
+                labelBetTimerCountDown.Text = (timerbetCountDown / 60).ToString("00") + ":" + (timerbetCountDown % 60).ToString("00");
+                //progressBar1.Value = countDownSecond;
+                
+            }
+
+        }
+
+        private void checkBoxSetBetTime_CheckedChanged(object sender, EventArgs e)
+        {
+            if( checkBoxSetBetTime.Checked == true )
+            {
+                timerBet.Enabled = true; 
+
+                     
+            }
+            else
+            {
+                timerBet.Enabled = false;
+            }
+        }
+
+        private void button61_Click(object sender, EventArgs e)
+        {
+            string sql = "* FROM biglottery_member_lottery where 1 = 1 ";
+            if (comboBoxResultMember.Text != "")
+                sql += "and member_account = " + comboBoxResultMember.Text;
+            if(comboBoxResultLotteryNo.Text != "")
+                sql += "and lotter_no = " + comboBoxResultLotteryNo.Text;
+            JObject jObject = connector.GetJObjectSelectSQLWithUrl(baseUrl,sql);
+            if (jObject == null) return;
+            dataGridViewResult.Columns.Clear();
+            //Dictionary<string, string> valuePairs = new Dictionary<string, string>();
+            ////Dictionary<Newtonsoft.Json.JsonToken, string> groupNames = jObject["data"].ToDictionary<Newtonsoft.Json.JsonToken,
+            //foreach (var item in groupNames)
+            //{
+            //    dataGridViewResult.Columns.Add(item, item);
+            //}
+
+        }
+
+        private void button63_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

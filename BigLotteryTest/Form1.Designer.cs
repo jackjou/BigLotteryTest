@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.mySqlDataAdapter1 = new Devart.Data.MySql.MySqlDataAdapter();
-            this.mySqlConnection1 = new Devart.Data.MySql.MySqlConnection();
+            this.components = new System.ComponentModel.Container();            
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -144,28 +147,57 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBoxLotteryNo = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.richTextBoxBetGroup = new System.Windows.Forms.RichTextBox();
+            this.labelBetTimerCountDown = new System.Windows.Forms.Label();
+            this.checkedListBoxBetGroup = new System.Windows.Forms.CheckedListBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.textBoxBetValue = new System.Windows.Forms.TextBox();
+            this.textBoxSetBetTime = new System.Windows.Forms.TextBox();
+            this.checkBoxSetBetTime = new System.Windows.Forms.CheckBox();
+            this.checkedListBoxMember = new System.Windows.Forms.CheckedListBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.label28 = new System.Windows.Forms.Label();
+            this.richTextBoxGroup = new System.Windows.Forms.RichTextBox();
+            this.checkedListBoxGroup = new System.Windows.Forms.CheckedListBox();
+            this.labelTimerCountdown = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.textBoxTimerSet = new System.Windows.Forms.TextBox();
+            this.checkBoxTimerOpen = new System.Windows.Forms.CheckBox();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.comboBoxResultLotteryNo = new System.Windows.Forms.ComboBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.comboBoxResultMember = new System.Windows.Forms.ComboBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.button62 = new System.Windows.Forms.Button();
+            this.button61 = new System.Windows.Forms.Button();
+            this.dataGridViewResult = new System.Windows.Forms.DataGridView();
+            this.timerOpen = new System.Windows.Forms.Timer(this.components);
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.timerBet = new System.Windows.Forms.Timer(this.components);
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.button63 = new System.Windows.Forms.Button();
+            this.textBoxBlockChainAcc = new System.Windows.Forms.TextBox();
+            this.textBoxBlockChainPass = new System.Windows.Forms.TextBox();
             this.tabPage4.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.tabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResult)).BeginInit();
+            this.tabPage7.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // mySqlDataAdapter1
-            // 
-            this.mySqlDataAdapter1.DeleteCommand = null;
-            this.mySqlDataAdapter1.InsertCommand = null;
-            this.mySqlDataAdapter1.SelectCommand = null;
-            this.mySqlDataAdapter1.UpdateCommand = null;
-            // 
-            // mySqlConnection1
-            // 
-            this.mySqlConnection1.Name = "mySqlConnection1";
             // 
             // tabPage4
             // 
@@ -203,6 +235,44 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "樂透兌獎";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Location = new System.Drawing.Point(10, 288);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(581, 64);
+            this.richTextBox2.TabIndex = 42;
+            this.richTextBox2.Text = "";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(10, 242);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(132, 40);
+            this.button2.TabIndex = 41;
+            this.button2.Text = "取得機台群組最新一期期號";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(148, 250);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 12);
+            this.label2.TabIndex = 44;
+            this.label2.Text = "機台群組名稱";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "G001",
+            "G002"});
+            this.comboBox2.Location = new System.Drawing.Point(231, 247);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(150, 20);
+            this.comboBox2.TabIndex = 43;
             // 
             // label21
             // 
@@ -703,6 +773,9 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPage6);
+            this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -1387,43 +1460,370 @@
             this.label6.TabIndex = 7;
             this.label6.Text = "投注金額";
             // 
-            // richTextBox2
+            // tabPage5
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(10, 288);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(581, 64);
-            this.richTextBox2.TabIndex = 42;
-            this.richTextBox2.Text = "";
+            this.tabPage5.Controls.Add(this.groupBox3);
+            this.tabPage5.Controls.Add(this.groupBox2);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(791, 509);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "自動開獎流程";
+            this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // groupBox3
             // 
-            this.button2.Location = new System.Drawing.Point(10, 242);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(132, 40);
-            this.button2.TabIndex = 41;
-            this.button2.Text = "取得機台群組最新一期期號";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.groupBox3.Controls.Add(this.textBoxLotteryNo);
+            this.groupBox3.Controls.Add(this.label31);
+            this.groupBox3.Controls.Add(this.label30);
+            this.groupBox3.Controls.Add(this.richTextBoxBetGroup);
+            this.groupBox3.Controls.Add(this.labelBetTimerCountDown);
+            this.groupBox3.Controls.Add(this.checkedListBoxBetGroup);
+            this.groupBox3.Controls.Add(this.label32);
+            this.groupBox3.Controls.Add(this.label29);
+            this.groupBox3.Controls.Add(this.textBoxBetValue);
+            this.groupBox3.Controls.Add(this.textBoxSetBetTime);
+            this.groupBox3.Controls.Add(this.checkBoxSetBetTime);
+            this.groupBox3.Controls.Add(this.checkedListBoxMember);
+            this.groupBox3.Location = new System.Drawing.Point(422, 15);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(361, 384);
+            this.groupBox3.TabIndex = 4;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "自動投注設定";
             // 
-            // label2
+            // textBoxLotteryNo
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(148, 250);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 12);
-            this.label2.TabIndex = 44;
-            this.label2.Text = "機台群組名稱";
+            this.textBoxLotteryNo.Location = new System.Drawing.Point(178, 86);
+            this.textBoxLotteryNo.Name = "textBoxLotteryNo";
+            this.textBoxLotteryNo.Size = new System.Drawing.Size(148, 22);
+            this.textBoxLotteryNo.TabIndex = 9;
             // 
-            // comboBox2
+            // label31
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "G001",
-            "G002"});
-            this.comboBox2.Location = new System.Drawing.Point(231, 247);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(150, 20);
-            this.comboBox2.TabIndex = 43;
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(319, 130);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(17, 12);
+            this.label31.TabIndex = 7;
+            this.label31.Text = "秒";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(176, 71);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(53, 12);
+            this.label30.TabIndex = 8;
+            this.label30.Text = "樂透期號";
+            // 
+            // richTextBoxBetGroup
+            // 
+            this.richTextBoxBetGroup.Location = new System.Drawing.Point(18, 184);
+            this.richTextBoxBetGroup.Name = "richTextBoxBetGroup";
+            this.richTextBoxBetGroup.Size = new System.Drawing.Size(314, 180);
+            this.richTextBoxBetGroup.TabIndex = 6;
+            this.richTextBoxBetGroup.Text = "";
+            // 
+            // labelBetTimerCountDown
+            // 
+            this.labelBetTimerCountDown.AutoSize = true;
+            this.labelBetTimerCountDown.Location = new System.Drawing.Point(273, 157);
+            this.labelBetTimerCountDown.Name = "labelBetTimerCountDown";
+            this.labelBetTimerCountDown.Size = new System.Drawing.Size(29, 12);
+            this.labelBetTimerCountDown.TabIndex = 4;
+            this.labelBetTimerCountDown.Text = "1:00 ";
+            // 
+            // checkedListBoxBetGroup
+            // 
+            this.checkedListBoxBetGroup.FormattingEnabled = true;
+            this.checkedListBoxBetGroup.Location = new System.Drawing.Point(18, 114);
+            this.checkedListBoxBetGroup.Name = "checkedListBoxBetGroup";
+            this.checkedListBoxBetGroup.Size = new System.Drawing.Size(141, 55);
+            this.checkedListBoxBetGroup.TabIndex = 5;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(177, 157);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(80, 12);
+            this.label32.TabIndex = 3;
+            this.label32.Text = "距離開獎時間:";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(176, 21);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(53, 12);
+            this.label29.TabIndex = 8;
+            this.label29.Text = "投注金額";
+            // 
+            // textBoxBetValue
+            // 
+            this.textBoxBetValue.Location = new System.Drawing.Point(178, 38);
+            this.textBoxBetValue.Name = "textBoxBetValue";
+            this.textBoxBetValue.Size = new System.Drawing.Size(148, 22);
+            this.textBoxBetValue.TabIndex = 7;
+            this.textBoxBetValue.Text = "50";
+            // 
+            // textBoxSetBetTime
+            // 
+            this.textBoxSetBetTime.Location = new System.Drawing.Point(257, 124);
+            this.textBoxSetBetTime.Name = "textBoxSetBetTime";
+            this.textBoxSetBetTime.Size = new System.Drawing.Size(56, 22);
+            this.textBoxSetBetTime.TabIndex = 0;
+            this.textBoxSetBetTime.Text = "5";
+            this.textBoxSetBetTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // checkBoxSetBetTime
+            // 
+            this.checkBoxSetBetTime.AutoSize = true;
+            this.checkBoxSetBetTime.Location = new System.Drawing.Point(179, 126);
+            this.checkBoxSetBetTime.Name = "checkBoxSetBetTime";
+            this.checkBoxSetBetTime.Size = new System.Drawing.Size(72, 16);
+            this.checkBoxSetBetTime.TabIndex = 2;
+            this.checkBoxSetBetTime.Text = "定時投注";
+            this.checkBoxSetBetTime.UseVisualStyleBackColor = true;
+            this.checkBoxSetBetTime.CheckedChanged += new System.EventHandler(this.checkBoxSetBetTime_CheckedChanged);
+            // 
+            // checkedListBoxMember
+            // 
+            this.checkedListBoxMember.FormattingEnabled = true;
+            this.checkedListBoxMember.Location = new System.Drawing.Point(18, 19);
+            this.checkedListBoxMember.Name = "checkedListBoxMember";
+            this.checkedListBoxMember.Size = new System.Drawing.Size(141, 89);
+            this.checkedListBoxMember.TabIndex = 6;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.progressBar1);
+            this.groupBox2.Controls.Add(this.label28);
+            this.groupBox2.Controls.Add(this.richTextBoxGroup);
+            this.groupBox2.Controls.Add(this.checkedListBoxGroup);
+            this.groupBox2.Controls.Add(this.labelTimerCountdown);
+            this.groupBox2.Controls.Add(this.label27);
+            this.groupBox2.Controls.Add(this.textBoxTimerSet);
+            this.groupBox2.Controls.Add(this.checkBoxTimerOpen);
+            this.groupBox2.Location = new System.Drawing.Point(8, 15);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(399, 384);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "定時開獎設定";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(22, 114);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(358, 19);
+            this.progressBar1.TabIndex = 8;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(162, 22);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(17, 12);
+            this.label28.TabIndex = 7;
+            this.label28.Text = "分";
+            // 
+            // richTextBoxGroup
+            // 
+            this.richTextBoxGroup.Location = new System.Drawing.Point(22, 144);
+            this.richTextBoxGroup.Name = "richTextBoxGroup";
+            this.richTextBoxGroup.Size = new System.Drawing.Size(361, 180);
+            this.richTextBoxGroup.TabIndex = 6;
+            this.richTextBoxGroup.Text = "";
+            // 
+            // checkedListBoxGroup
+            // 
+            this.checkedListBoxGroup.FormattingEnabled = true;
+            this.checkedListBoxGroup.Location = new System.Drawing.Point(242, 19);
+            this.checkedListBoxGroup.Name = "checkedListBoxGroup";
+            this.checkedListBoxGroup.Size = new System.Drawing.Size(141, 89);
+            this.checkedListBoxGroup.TabIndex = 5;
+            // 
+            // labelTimerCountdown
+            // 
+            this.labelTimerCountdown.AutoSize = true;
+            this.labelTimerCountdown.Location = new System.Drawing.Point(118, 54);
+            this.labelTimerCountdown.Name = "labelTimerCountdown";
+            this.labelTimerCountdown.Size = new System.Drawing.Size(29, 12);
+            this.labelTimerCountdown.TabIndex = 4;
+            this.labelTimerCountdown.Text = "1:00 ";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(22, 54);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(80, 12);
+            this.label27.TabIndex = 3;
+            this.label27.Text = "距離開獎時間:";
+            // 
+            // textBoxTimerSet
+            // 
+            this.textBoxTimerSet.Location = new System.Drawing.Point(100, 19);
+            this.textBoxTimerSet.Name = "textBoxTimerSet";
+            this.textBoxTimerSet.Size = new System.Drawing.Size(56, 22);
+            this.textBoxTimerSet.TabIndex = 0;
+            this.textBoxTimerSet.Text = "1";
+            this.textBoxTimerSet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // checkBoxTimerOpen
+            // 
+            this.checkBoxTimerOpen.AutoSize = true;
+            this.checkBoxTimerOpen.Location = new System.Drawing.Point(22, 21);
+            this.checkBoxTimerOpen.Name = "checkBoxTimerOpen";
+            this.checkBoxTimerOpen.Size = new System.Drawing.Size(72, 16);
+            this.checkBoxTimerOpen.TabIndex = 2;
+            this.checkBoxTimerOpen.Text = "定時開獎";
+            this.checkBoxTimerOpen.UseVisualStyleBackColor = true;
+            this.checkBoxTimerOpen.CheckedChanged += new System.EventHandler(this.checkBoxTimerOpen_CheckedChanged);
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.comboBoxResultLotteryNo);
+            this.tabPage6.Controls.Add(this.label34);
+            this.tabPage6.Controls.Add(this.comboBoxResultMember);
+            this.tabPage6.Controls.Add(this.label33);
+            this.tabPage6.Controls.Add(this.button62);
+            this.tabPage6.Controls.Add(this.button61);
+            this.tabPage6.Controls.Add(this.dataGridViewResult);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(791, 509);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "自動投注結果";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxResultLotteryNo
+            // 
+            this.comboBoxResultLotteryNo.FormattingEnabled = true;
+            this.comboBoxResultLotteryNo.Items.AddRange(new object[] {
+            "cloudlin322",
+            "jackjou",
+            "boss",
+            "time"});
+            this.comboBoxResultLotteryNo.Location = new System.Drawing.Point(76, 53);
+            this.comboBoxResultLotteryNo.Name = "comboBoxResultLotteryNo";
+            this.comboBoxResultLotteryNo.Size = new System.Drawing.Size(148, 20);
+            this.comboBoxResultLotteryNo.TabIndex = 10;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(17, 56);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(53, 12);
+            this.label34.TabIndex = 11;
+            this.label34.Text = "樂透期號";
+            // 
+            // comboBoxResultMember
+            // 
+            this.comboBoxResultMember.FormattingEnabled = true;
+            this.comboBoxResultMember.Items.AddRange(new object[] {
+            "cloudlin322",
+            "jackjou",
+            "boss",
+            "time"});
+            this.comboBoxResultMember.Location = new System.Drawing.Point(76, 22);
+            this.comboBoxResultMember.Name = "comboBoxResultMember";
+            this.comboBoxResultMember.Size = new System.Drawing.Size(148, 20);
+            this.comboBoxResultMember.TabIndex = 8;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(17, 26);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(53, 12);
+            this.label33.TabIndex = 9;
+            this.label33.Text = "會員帳號";
+            // 
+            // button62
+            // 
+            this.button62.Location = new System.Drawing.Point(429, 22);
+            this.button62.Name = "button62";
+            this.button62.Size = new System.Drawing.Size(85, 46);
+            this.button62.TabIndex = 1;
+            this.button62.Text = "中獎結果";
+            this.button62.UseVisualStyleBackColor = true;
+            // 
+            // button61
+            // 
+            this.button61.Location = new System.Drawing.Point(327, 22);
+            this.button61.Name = "button61";
+            this.button61.Size = new System.Drawing.Size(85, 46);
+            this.button61.TabIndex = 1;
+            this.button61.Text = "查詢明細";
+            this.button61.UseVisualStyleBackColor = true;
+            this.button61.Click += new System.EventHandler(this.button61_Click);
+            // 
+            // dataGridViewResult
+            // 
+            this.dataGridViewResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewResult.Location = new System.Drawing.Point(8, 90);
+            this.dataGridViewResult.Name = "dataGridViewResult";
+            this.dataGridViewResult.RowTemplate.Height = 24;
+            this.dataGridViewResult.Size = new System.Drawing.Size(775, 128);
+            this.dataGridViewResult.TabIndex = 0;
+            // 
+            // timerOpen
+            // 
+            this.timerOpen.Interval = 1000;
+            this.timerOpen.Tick += new System.EventHandler(this.timerOpen_Tick);
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            // 
+            // timerBet
+            // 
+            this.timerBet.Interval = 1000;
+            this.timerBet.Tick += new System.EventHandler(this.timerBet_Tick);
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.textBoxBlockChainPass);
+            this.tabPage7.Controls.Add(this.textBoxBlockChainAcc);
+            this.tabPage7.Controls.Add(this.button63);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(791, 509);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.Text = "區塊鍊測試";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // button63
+            // 
+            this.button63.Location = new System.Drawing.Point(215, 43);
+            this.button63.Name = "button63";
+            this.button63.Size = new System.Drawing.Size(156, 46);
+            this.button63.TabIndex = 0;
+            this.button63.Text = "註冊帳號";
+            this.button63.UseVisualStyleBackColor = true;
+            this.button63.Click += new System.EventHandler(this.button63_Click);
+            // 
+            // textBoxBlockChainAcc
+            // 
+            this.textBoxBlockChainAcc.Location = new System.Drawing.Point(52, 43);
+            this.textBoxBlockChainAcc.Name = "textBoxBlockChainAcc";
+            this.textBoxBlockChainAcc.Size = new System.Drawing.Size(138, 22);
+            this.textBoxBlockChainAcc.TabIndex = 1;
+            // 
+            // textBoxBlockChainPass
+            // 
+            this.textBoxBlockChainPass.Location = new System.Drawing.Point(52, 75);
+            this.textBoxBlockChainPass.Name = "textBoxBlockChainPass";
+            this.textBoxBlockChainPass.Size = new System.Drawing.Size(138, 22);
+            this.textBoxBlockChainPass.TabIndex = 1;
             // 
             // Form1
             // 
@@ -1444,13 +1844,21 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResult)).EndInit();
+            this.tabPage7.ResumeLayout(false);
+            this.tabPage7.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
-        #endregion
-        private Devart.Data.MySql.MySqlDataAdapter mySqlDataAdapter1;
-        private Devart.Data.MySql.MySqlConnection mySqlConnection1;
+        #endregion        
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox textBox5;
@@ -1569,6 +1977,44 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label labelTimerCountdown;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox textBoxTimerSet;
+        private System.Windows.Forms.CheckBox checkBoxTimerOpen;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.Timer timerOpen;
+        private System.Windows.Forms.CheckedListBox checkedListBoxGroup;
+        private System.Windows.Forms.RichTextBox richTextBoxGroup;
+        private System.Windows.Forms.Label label28;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.CheckedListBox checkedListBoxMember;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox textBoxBetValue;
+        private System.Windows.Forms.TextBox textBoxLotteryNo;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.RichTextBox richTextBoxBetGroup;
+        private System.Windows.Forms.CheckedListBox checkedListBoxBetGroup;
+        private System.Windows.Forms.Timer timerBet;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.TextBox textBoxSetBetTime;
+        private System.Windows.Forms.CheckBox checkBoxSetBetTime;
+        private System.Windows.Forms.Label labelBetTimerCountDown;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.DataGridView dataGridViewResult;
+        private System.Windows.Forms.ComboBox comboBoxResultLotteryNo;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.ComboBox comboBoxResultMember;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Button button62;
+        private System.Windows.Forms.Button button61;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.TextBox textBoxBlockChainPass;
+        private System.Windows.Forms.TextBox textBoxBlockChainAcc;
+        private System.Windows.Forms.Button button63;
     }
 }
 
